@@ -1,7 +1,7 @@
 # Gene Selection and Sample Prediction using a Genetic Algorithm and k-nearest Neighbors Algorithm (GA/KNN)
 
 
-###Leping Li
+**Leping Li** <br>
 **National Institute of Environmental Health Sciences, NIH** <br>
 **Durham, North Carolina 27709** <br>
 **Email: [li3@niehs.nih.gov](li3@niehs.nih.gov)** <br>
