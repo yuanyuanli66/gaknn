@@ -1,4 +1,4 @@
-# Gene Selection and Sample Prediction using a Genetic Algorithm and k-nearest Neighbors Algorithm (GA/KNN)
+# Gene Selection and Sample Prediction using a Genetic Algorithm and K-Nearest Neighbors Algorithm (GA/KNN)
 
 
 **Leping Li** <br>
@@ -16,16 +16,16 @@ gaknn requires two input data files:
 * one contains sample names and outcome labels (outcome variable)
 * one contains expression data (predictors - matrix)
 
-In the **Data** folder, you can find an example of the input files: <span style="color:blue">1372\_trametinib.<span style="color:red">ic50</span></span> and <span style="color:blue">1372\_trametinib.<span style="color:red">value</span></span>. In this example, <span style="color:blue">1372_trametinib</span> is the file name. Note that the two files have the same file name but different extensions (in <span style="color:red">red</span>).  You can change the extensions to whatever you like but they must match the extensions specified in the run script (example **run.sh** provided) or the file names in the command line (see an example, below). 
+In the **Data** folder, you can find an example of the input files: *1372\_trametinib.ic50* and *1372\_trametinib.value*. In this example, ***1372_trametinib*** is the file name. Note that the two files have the same file name but different extensions. You can change the extensions to whatever you like but they must match the extensions specified in the run script (example **run.sh** provided) or the file names in the command line (see an example, below). 
 
 
-* <span style="color:blue">1372\_trametinib.<span style="color:red">ic50</span></span> contains cell line names and the respective IC<sub>50</sub> values for a drug
-* <span style="color:blue">1372\_trametinib.<span style="color:red">value</span></span> contains the gene expression data for the cell lines
+* *1372\_trametinib.ic50* contains cell line names and the respective IC<sub>50</sub> values for a drug
+* *1372\_trametinib.value* contains the gene expression data for the cell lines
 
-Each row of the expression data (*.<span style="color:red">value</span>) corresponds to a gene. Each column corresponds to the expression values of the genes in a sample (e.g., cell line). The number of columns in the .value file must be equal to the number of samples in the .<span style="color:red">ic50</span> file + 1 (gene name column). The orders for which the samples appear in the .<span style="color:red">value</span> file must match those in the .<span style="color:red">ic50</span> file.
+Each row of the expression data (\*.value) corresponds to a gene. Each column corresponds to the expression values of the genes in a sample (e.g., cell line). The number of columns in the ***\.value*** file must be equal to the number of samples in the ***\.ic50*** file + 1 (gene name column). The orders for which the samples appear in the ***\.value*** file must match those in the ***\.ic50*** file.
 
 
-As mentioned above, the .<span style="color:red">ic50</span> file has two columns—sample name and outcome (e.g., ln(IC<sub>50</sub>)). In both datasets provided, there are no unknown samples whose values need to be predicted. For those datasets, the **gaknn** algorithm will simply divide the samples randomly into a training and testing set and use the training data to select a set of genes (a “chromosome”) whose expression data are most predictive of the IC<sub>50</sub> values of samples in the training set. The identified genes are subsequently used to predict the IC<sub>50</sub> values of the test samples. This process is repeated multiple times (e.g., cycle=100 times). If you have independent test set samples whose IC<sub>50</sub> values need to be predicted, you can specify those samples by assigning their IC<sub>50</sub> values as -**9999** or **NA** in the .<span style="color:red">ic50</span> file. Of course, you would need to have the corresponding gene expression data appended to the .<span style="color:red">value</span> file. If the numbers of samples in both the .<span style="color:red">ic50</span> and .<span style="color:red">value</span> do not match, the software will not run. 
+As mentioned above, the ***\.ic50*** file has two columns—sample name and outcome (e.g., ln(IC<sub>50</sub>)). In both datasets provided, there are no unknown samples whose values need to be predicted. For those datasets, the **gaknn** algorithm will simply divide the samples randomly into a training and testing set and use the training data to select a set of genes (a "chromosome") whose expression data are most predictive of the IC<sub>50</sub> values of samples in the training set. The identified genes are subsequently used to predict the IC<sub>50</sub> values of the test samples. This process is repeated multiple times (e.g., cycle=100 times). If you have independent test set samples whose IC<sub>50</sub> values need to be predicted, you can specify those samples by assigning their IC<sub>50</sub> values as **-9999** or **NA** in the ***\.ic50*** file. Of course, you would need to have the corresponding gene expression data appended to the ***\.value*** file. If the numbers of samples in both the ***\.ic50*** and ***.value*** do not match, the software will not run. 
 
 
 A few additional points worth of mentioning:
